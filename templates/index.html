@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
     <head>
@@ -5,7 +6,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="img/favicon.png" type="image/png">
-        <title>MeetMe Personal</title>
+        <title>{{ user.name }}'s Profile</title>
         <!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
 		<link rel="stylesheet" href="{% static 'vendors/linericon/style.css' %}">
@@ -27,7 +28,7 @@
             	<nav class="navbar navbar-expand-lg navbar-light">
 					<div class="container box_1620">
 						<!-- Brand and toggle get grouped for better mobile display -->
-						<a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt=""></a>
+						<a class="navbar-brand logo_h" href="index.html"><img src="{{ user.profile_logo.url }}" alt=""></a>
 						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
@@ -43,7 +44,6 @@
 									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
 									<ul class="dropdown-menu">
 										<li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
-										<li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
 									</ul>
 								</li> 
 								<li class="nav-item submenu dropdown">
@@ -69,19 +69,19 @@
 					<div class="banner_content">
 						<div class="media">
 							<div class="d-flex">
-								<img src="img/personal.jpg" alt="">
+								<img src="{{ user.profile_image.url }}" alt="User Image" class="img-fluid">
 							</div>
 							<div class="media-body">
 								<div class="personal_text">
 									<h6>Hello Everybody, i am</h6>
-									<h3>Donald McKinney</h3>
-									<h4>Junior UI/UX Developer</h4>
-									<p>You will begin to realise why this exercise is called the Dickens Pattern (with reference to the ghost showing Scrooge some different futures)</p>
+									<h3>{{ user.name }}</h3>
+									<h4>{{ user.title }}</h4>
+									<p>{{ user.about }}</p>
 									<ul class="list basic_info">
-										<li><a href="#"><i class="lnr lnr-calendar-full"></i> 31st December, 1992</a></li>
-										<li><a href="#"><i class="lnr lnr-phone-handset"></i> 44 (012) 6954 783</a></li>
-										<li><a href="#"><i class="lnr lnr-envelope"></i> businessplan@donald</a></li>
-										<li><a href="#"><i class="lnr lnr-home"></i> Santa monica bullevard</a></li>
+										<li><a href="#"><i class="lnr lnr-calendar-full"></i> {{ user.date_of_birth }}</a></li>
+										<li><a href="#"><i class="lnr lnr-phone-handset"></i> {{ user.phone }}</a></li>
+										<li><a href="#"><i class="lnr lnr-envelope"></i> {{ user.contact_email }}</a></li>
+										<li><a href="#"><i class="lnr lnr-home"></i> {{ user.location }}</a></li>
 									</ul>
 									<ul class="list personal_social">
 										<li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -104,26 +104,26 @@
         			<div class="col-lg-6">
         				<div class="welcome_text">
         					<h4>About Myself</h4>
-        					<p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach. inappropriate behavior is often laughed.</p>
+        					<p>{{ user.about }}</p>
         					<div class="row">
         						<div class="col-md-4">
         							<div class="wel_item">
         								<i class="lnr lnr-database"></i>
-        								<h4>$2.5M</h4>
+        								<h4>{{ user.total_donations }}</h4>
         								<p>Total Donation</p>
         							</div>
         						</div>
         						<div class="col-md-4">
         							<div class="wel_item">
         								<i class="lnr lnr-book"></i>
-        								<h4>1465</h4>
+        								<h4>{{ user.total_projects }}</h4>
         								<p>Total Projects</p>
         							</div>
         						</div>
         						<div class="col-md-4">
         							<div class="wel_item">
         								<i class="lnr lnr-users"></i>
-        								<h4>3965</h4>
+        								<h4>{{ user.total_volunteers }}</h4>
         								<p>Total Volunteers</p>
         							</div>
         						</div>
@@ -133,46 +133,16 @@
         			<div class="col-lg-6">
         				<div class="tools_expert">
         					<div class="skill_main">
+								{% for skill in skills %}
 								<div class="skill_item">
-									<h4>After Effects <span class="counter">85</span>%</h4>
+									<h4>{{ skill.skill_name }} <span class="counter">{{ skill.proficiency }}</span>%</h4>
 									<div class="progress_br">
 										<div class="progress">
-											<div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+											<div class="progress-bar" role="progressbar" aria-valuenow="{{ skill.proficiency }}" aria-valuemin="0" aria-valuemax="100"></div>
 										</div>
 									</div>
 								</div>
-								<div class="skill_item">
-									<h4>Photoshop <span class="counter">90</span>%</h4>
-									<div class="progress_br">
-										<div class="progress">
-											<div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-										</div>
-									</div>
-								</div>
-								<div class="skill_item">
-									<h4>Illustrator <span class="counter">70</span>%</h4>
-									<div class="progress_br">
-										<div class="progress">
-											<div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-										</div>
-									</div>
-								</div>
-								<div class="skill_item">
-									<h4>Sublime <span class="counter">95</span>%</h4>
-									<div class="progress_br">
-										<div class="progress">
-											<div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-										</div>
-									</div>
-								</div>
-								<div class="skill_item">
-									<h4>Sketch <span class="counter">75</span>%</h4>
-									<div class="progress_br">
-										<div class="progress">
-											<div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-										</div>
-									</div>
-								</div>
+								{% endfor %}
 							</div>
         				</div>
         			</div>
@@ -196,82 +166,38 @@
 					<div class="tab-content" id="myTabContent">
 						<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 							<ul class="list">
+								{% for experience in experiences %}
 								<li>
 									<span></span>
 									<div class="media">
 										<div class="d-flex">
-											<p>March 2017 to present</p>
+											<p>{{ experience.start_date  }} to present</p>
 										</div>
 										<div class="media-body">
-											<h4>Colorlib</h4>
-											<p>Senior Web Developer <br />Santa monica, Los angeles</p>
+											<h4>{{ experience.company }}</h4>
+											<p>{{ experience.title }} <br /></p>
 										</div>
 									</div>
 								</li>
-								<li>
-									<span></span>
-									<div class="media">
-										<div class="d-flex">
-											<p>March 2017 to present</p>
-										</div>
-										<div class="media-body">
-											<h4>Colorlib</h4>
-											<p>Senior Web Developer <br />Santa monica, Los angeles</p>
-										</div>
-									</div>
-								</li>
-								<li>
-								<span></span>
-									<div class="media">
-										<div class="d-flex">
-											<p>March 2017 to present</p>
-										</div>
-										<div class="media-body">
-											<h4>Colorlib</h4>
-											<p>Senior Web Developer <br />Santa monica, Los angeles</p>
-										</div>
-									</div>
-								</li>
+								{% endfor %}
 							</ul>
 						</div>
 						<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 							<ul class="list">
+								{% for edu in education %}
 								<li>
 									<span></span>
 									<div class="media">
 										<div class="d-flex">
-											<p>March 2017 to present</p>
+											<p>{{ edu.start_date }} to present</p>
 										</div>
 										<div class="media-body">
-											<h4>Colorlib</h4>
-											<p>Senior Web Developer <br />Santa monica, Los angeles</p>
+											<h4>{{ edu.institution }}</h4>
+											<p>{{ edu.degree }} <br /> {{ edu.end_date }}</p>
 										</div>
 									</div>
 								</li>
-								<li>
-									<span></span>
-									<div class="media">
-										<div class="d-flex">
-											<p>March 2017 to present</p>
-										</div>
-										<div class="media-body">
-											<h4>Colorlib</h4>
-											<p>Senior Web Developer <br />Santa monica, Los angeles</p>
-										</div>
-									</div>
-								</li>
-								<li>
-								<span></span>
-									<div class="media">
-										<div class="d-flex">
-											<p>March 2017 to present</p>
-										</div>
-										<div class="media-body">
-											<h4>Colorlib</h4>
-											<p>Senior Web Developer <br />Santa monica, Los angeles</p>
-										</div>
-									</div>
-								</li>
+								{% endfor %}
 							</ul>
 						</div>
 					</div>
@@ -288,27 +214,16 @@
         			<p>If you are looking at blank cassettes on the web, you may be very confused at the difference in price. You may see some for as low as $.17 each.</p>
         		</div>
         		<div class="feature_inner row">
+					 {% for service in services %}
         			<div class="col-lg-4 col-md-6">
         				<div class="feature_item">
         					<i class="flaticon-city"></i>
-        					<h4>Architecture</h4>
-        					<p>If you are looking at blank cassettes on the web, you may be very confused at the difference in price. You may see some for as low as $17 each.</p>
+        					<h4>{{ service.title }}</h4>
+        					<p>{{ service.description }}</p>
         				</div>
         			</div>
-        			<div class="col-lg-4 col-md-6">
-        				<div class="feature_item">
-        					<i class="flaticon-skyline"></i>
-        					<h4>Interior Design</h4>
-        					<p>If you are looking at blank cassettes on the web, you may be very confused at the difference in price. You may see some for as low as $17 each.</p>
-        				</div>
-        			</div>
-        			<div class="col-lg-4 col-md-6">
-        				<div class="feature_item">
-        					<i class="flaticon-sketch"></i>
-        					<h4>Concept Design</h4>
-        					<p>If you are looking at blank cassettes on the web, you may be very confused at the difference in price. You may see some for as low as $17 each.</p>
-        				</div>
-        			</div>
+					{% endfor %}
+
         		</div>
         	</div>
         </section>
@@ -333,6 +248,7 @@
         	</div>
         	<div class="container">
         		<div class="gallery_f_inner row imageGallery1">
+					{% for project in projects %}
         			<div class="col-lg-4 col-md-4 col-sm-6 brand manipul design print">
         				<div class="h_gallery_item">
         					<div class="g_img_item">
@@ -340,71 +256,12 @@
         						<a class="light" href="img/gallery/project-1.jpg"><img src="img/gallery/icon.png" alt=""></a>
         					</div>
         					<div class="g_item_text">
-        						<h4>3D Helmet Design</h4>
-        						<p>Client Project</p>
+        						<h4>{{ project.title }}</h4>
+        						<p>{{ project.description }}</p>
         					</div>
         				</div>
         			</div>
-        			<div class="col-lg-4 col-md-4 col-sm-6 brand manipul creative">
-        				<div class="h_gallery_item">
-        					<div class="g_img_item">
-        						<img class="img-fluid" src="img/gallery/project-2.jpg" alt="">
-        						<a class="light" href="img/gallery/project-2.jpg"><img src="img/gallery/icon.png" alt=""></a>
-        					</div>
-        					<div class="g_item_text">
-        						<h4>2D Vinyl Design</h4>
-        						<p>Client Project</p>
-        					</div>
-        				</div>
-        			</div>
-        			<div class="col-lg-4 col-md-4 col-sm-6 manipul creative design print">
-        				<div class="h_gallery_item">
-        					<div class="g_img_item">
-        						<img class="img-fluid" src="img/gallery/project-3.jpg" alt="">
-        						<a class="light" href="img/gallery/project-3.jpg"><img src="img/gallery/icon.png" alt=""></a>
-        					</div>
-        					<div class="g_item_text">
-        						<h4>Creative Poster Design</h4>
-        						<p>Client Project</p>
-        					</div>
-        				</div>
-        			</div>
-        			<div class="col-lg-4 col-md-4 col-sm-6 brand creative print">
-        				<div class="h_gallery_item">
-        					<div class="g_img_item">
-        						<img class="img-fluid" src="img/gallery/project-4.jpg" alt="">
-        						<a class="light" href="img/gallery/project-4.jpg"><img src="img/gallery/icon.png" alt=""></a>
-        					</div>
-        					<div class="g_item_text">
-        						<h4>Embosed Logo Design</h4>
-        						<p>Client Project</p>
-        					</div>
-        				</div>
-        			</div>
-        			<div class="col-lg-4 col-md-4 col-sm-6 brand manipul design">
-        				<div class="h_gallery_item">
-        					<div class="g_img_item">
-        						<img class="img-fluid" src="img/gallery/project-5.jpg" alt="">
-        						<a class="light" href="img/gallery/project-5.jpg"><img src="img/gallery/icon.png" alt=""></a>
-        					</div>
-        					<div class="g_item_text">
-        						<h4>3D Disposable Bottle</h4>
-        						<p>Client Project</p>
-        					</div>
-        				</div>
-        			</div>
-        			<div class="col-lg-4 col-md-4 col-sm-6 brand creative">
-        				<div class="h_gallery_item">
-        					<div class="g_img_item">
-        						<img class="img-fluid" src="img/gallery/project-6.jpg" alt="">
-        						<a class="light" href="img/gallery/project-6.jpg"><img src="img/gallery/icon.png" alt=""></a>
-        					</div>
-        					<div class="g_item_text">
-        						<h4>3D Logo Design</h4>
-        						<p>Client Project</p>
-        					</div>
-        				</div>
-        			</div>
+					{% endfor %}
         		</div>
         		<div class="more_btn">
         			<a class="main_btn" href="#">Load More Items</a>
@@ -422,10 +279,11 @@
         		</div>
         		<div class="testi_inner">
 					<div class="testi_slider owl-carousel">
+						 {% for testimonial in testimonials %}
 						<div class="item">
 							<div class="testi_item">
-								<p>As conscious traveling Paup ers we must always be oncerned about our dear Mother Earth. If you think about it, you travel across her face</p>
-								<h4>Fanny Spencer</h4>
+								<p>{{ testimonial.content }}</p>
+								<h4>{{ testimonial.client_name }}</h4>
 								<a href="#"><i class="fa fa-star"></i></a>
 								<a href="#"><i class="fa fa-star"></i></a>
 								<a href="#"><i class="fa fa-star"></i></a>
@@ -433,28 +291,7 @@
 								<a href="#"><i class="fa fa-star-half-o"></i></a>
 							</div>
 						</div>
-						<div class="item">
-							<div class="testi_item">
-								<p>As conscious traveling Paup ers we must always be oncerned about our dear Mother Earth. If you think about it, you travel across her face</p>
-								<h4>Fanny Spencer</h4>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star-half-o"></i></a>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testi_item">
-								<p>As conscious traveling Paup ers we must always be oncerned about our dear Mother Earth. If you think about it, you travel across her face</p>
-								<h4>Fanny Spencer</h4>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star-half-o"></i></a>
-							</div>
-						</div>
+						{% endfor %}
 					</div>
         		</div>
         	</div>

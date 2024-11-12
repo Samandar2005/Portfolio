@@ -67,6 +67,7 @@ class Service(models.Model):
     user = models.ForeignKey(User, related_name="services", on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     description = models.TextField()
+    i_class_name = models.TextField()
 
     def __str__(self):
         return self.title

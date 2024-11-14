@@ -42,10 +42,14 @@ def about(request):
 
 
 def services(request):
+    user = User.objects.first()
+    skills = Skill.objects.all()
     services = Service.objects.all()
     testimonials = Testimonial.objects.all()
 
     context = {
+        'user': user,
+        'skills': skills,
         'services': services,
         'testimonials': testimonials,
     }

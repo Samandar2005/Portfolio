@@ -25,3 +25,17 @@ def index(request):
         'tags': tags,
     }
     return render(request, 'index.html', context)
+
+
+def about(request):
+    user = User.objects.first()
+    skills = Skill.objects.all()
+    testimonials = Testimonial.objects.all()
+
+    context = {
+        'user': user,
+        'skills': skills,
+        'testimonials': testimonials,
+    }
+
+    return render(request, 'about-us.html', context)

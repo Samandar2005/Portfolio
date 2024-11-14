@@ -27,20 +27,13 @@
     </head>
     <body>
 
-        <!--================Header Menu Area =================-->
         {% include 'header.html' %}
-
-        <!--================Header Menu Area =================-->
 
         {% block content %}{% endblock %}
 
 		{% include 'footer.html' %}
 
 
-
-
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 		<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
 		<script src="{% static 'js/popper.js' %}"></script>
 		<script src="{% static 'js/bootstrap.min.js' %}"></script>

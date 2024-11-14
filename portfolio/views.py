@@ -39,3 +39,27 @@ def about(request):
     }
 
     return render(request, 'about-us.html', context)
+
+
+def services(request):
+    services = Service.objects.all()
+    testimonials = Testimonial.objects.all()
+
+    context = {
+        'services': services,
+        'testimonials': testimonials,
+    }
+
+    return render(request, 'services.html', context)
+
+
+def portfolio(request):
+    services = Service.objects.all()
+    testimonials = Testimonial.objects.all()
+
+    context = {
+        'services': services,
+        'testimonials': testimonials,
+    }
+
+    return render(request, 'portfolio.html', context)

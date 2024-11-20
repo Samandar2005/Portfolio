@@ -58,6 +58,7 @@ class Project(models.Model):
     description = models.TextField()
     type = models.CharField(max_length=50)
     category = models.CharField(max_length=50)
+    project_image = models.ImageField(upload_to='project_image/', blank=True, null=True)
 
     def __str__(self):
         return self.title
@@ -67,7 +68,8 @@ class Service(models.Model):
     user = models.ForeignKey(User, related_name="services", on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     description = models.TextField()
-    i_class_name = models.TextField()
+    service_image = models.ImageField(upload_to='service_image/', blank=True, null=True)
+
 
     def __str__(self):
         return self.title

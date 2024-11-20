@@ -1,6 +1,24 @@
 
 	{% extends 'base.html' %}
+	{% load static %}
 	{% block content %}
+	<style>
+    	.service-icon {
+    	    width: 100%; /* Tasvirning kengligi */
+    	    height: 100%; /* Tasvirning balandligi */
+    	    object-fit: cover; /* Tasvirni to'g'ri joylash uchun */
+    	    margin-bottom: 15px; /* H4 teggacha masofa */
+    	}
+		.feature_item{
+			min-height: 97%;
+			margin: 10px;
+
+		}
+		.feature_item h4{
+			text-align: center;
+		}
+
+	</style>
         <!--================Home Banner Area =================-->
         <section class="home_banner_area">
            	<div class="container box_1620">
@@ -147,25 +165,25 @@
         
         <!--================Feature Area =================-->
         <section class="feature_area p_120">
-        	<div class="container">
-        		<div class="main_title">
-        			<h2>offerings to my clients</h2>
-        			<p>My professional services span across multiple areas, from design and development to data analytics and more. With years of experience, I help my clients achieve their goals by providing high-quality solutions tailored to their needs.</p>
-        		</div>
-        		<div class="feature_inner row">
-					 {% for service in services %}
-        			<div class="col-lg-4 col-md-6">
-        				<div class="feature_item">
-        					<i class="{{ service.i_class_name }}"></i>
-        					<h4>{{ service.title }}</h4>
-        					<p>{{ service.description }}</p>
-        				</div>
-        			</div>
-					{% endfor %}
+    <div class="container">
+        <div class="main_title">
+            <h2>offerings to my clients</h2>
+            <p>My professional services span across multiple areas, from design and development to data analytics and more. With years of experience, I help my clients achieve their goals by providing high-quality solutions tailored to their needs.</p>
+        </div>
+        <div class="feature_inner row">
+            {% for service in services %}
+            <div class="col-lg-4 col-md-6">
+                <div class="feature_item">
+                    <img src="{{ service.service_image.url }}" alt="{{ service.title }}" class="service-icon">
+                    <h4>{{ service.title }}</h4>
+                    <p>{{ service.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 
-        		</div>
-        	</div>
-        </section>
         <!--================End Feature Area =================-->
         
         <!--================Home Gallery Area =================-->
@@ -175,15 +193,6 @@
         			<h2>Our Latest Featured Projects</h2>
         			<p>Who are in extremely love with eco friendly system.</p>
         		</div>
-        		<div class="isotope_fillter">
-        			<ul class="gallery_filter list">
-						<li class="active" data-filter="*"><a href="#">All</a></li>
-						<li data-filter=".brand"><a href="#">Vector</a></li>
-						<li data-filter=".manipul"><a href="#">Raster</a></li>
-						<li data-filter=".creative"><a href="#">UI/UX</a></li>
-						<li data-filter=".design"><a href="#">Printing</a></li>
-					</ul>
-        		</div>
         	</div>
         	<div class="container">
         		<div class="gallery_f_inner row imageGallery1">
@@ -191,8 +200,10 @@
         			<div class="col-lg-4 col-md-4 col-sm-6 brand manipul design print">
         				<div class="h_gallery_item">
         					<div class="g_img_item">
-        						<img class="img-fluid" src="img/gallery/project-1.jpg" alt="">
-        						<a class="light" href="img/gallery/project-1.jpg"><img src="img/gallery/icon.png" alt=""></a>
+        						<img class="img-fluid" src="{{ project.project_image.url }}" alt="">
+        						<a class="light" href="{{ project.project_image.url }}">
+									<img src="{% static 'img/gallery/icon.png' %}" alt="">
+								</a>
         					</div>
         					<div class="g_item_text">
         						<h4>{{ project.title }}</h4>

@@ -1,24 +1,7 @@
-
 	{% extends 'base.html' %}
 	{% load static %}
 	{% block content %}
-	<style>
-    	.service-icon {
-    	    width: 100%; /* Tasvirning kengligi */
-    	    height: 100%; /* Tasvirning balandligi */
-    	    object-fit: cover; /* Tasvirni to'g'ri joylash uchun */
-    	    margin-bottom: 15px; /* H4 teggacha masofa */
-    	}
-		.feature_item{
-			min-height: 97%;
-			margin: 10px;
 
-		}
-		.feature_item h4{
-			text-align: center;
-		}
-
-	</style>
         <!--================Home Banner Area =================-->
         <section class="home_banner_area">
            	<div class="container box_1620">
@@ -41,9 +24,9 @@
 										<li><a href="#"><i class="lnr lnr-home"></i> {{ user.location }}</a></li>
 									</ul>
 									<ul class="list personal_social">
-										<li><a href="#"><i class="fa fa-github"></i></a></li>
-										<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-										<li><a href="#"><i class="fa fa-telegram"></i></a></li>
+										<li><a href="https://github.com/Samandar2005" target="_blank"><i class="fa fa-github"></i></a></li>
+										<li><a href="https://www.linkedin.com/in/samandar-bo-riyev-612250266/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+										<li><a href="https://t.me/BoriyevSamandar"><i class="fa fa-telegram" target="_blank"></i></a></li>
 									</ul>
 								</div>
 							</div>
@@ -174,7 +157,7 @@
             {% for service in services %}
             <div class="col-lg-4 col-md-6">
                 <div class="feature_item">
-                    <img src="{{ service.service_image.url }}" alt="{{ service.title }}" class="service-icon">
+                    <img style="height: 200px" src="{{ service.service_image.url }}" alt="{{ service.title }}" class="service-icon">
                     <h4>{{ service.title }}</h4>
                     <p>{{ service.description }}</p>
                 </div>
@@ -190,8 +173,8 @@
         <section class="home_gallery_area p_120">
         	<div class="container">
         		<div class="main_title">
-        			<h2>Our Latest Featured Projects</h2>
-        			<p>Who are in extremely love with eco friendly system.</p>
+        			<h2>Our Latest Successful Projects</h2>
+        			<p>Showcasing our recent work and successful outcomes.</p>
         		</div>
         	</div>
         	<div class="container">
@@ -225,13 +208,13 @@
         	<div class="container">
         		<div class="main_title">
         			<h2>Testimonials</h2>
-        			<p>If you are looking at blank cassettes on the web, you may be very confused at the difference in price. You may see some for as low as $.17 each.</p>
+        			<p>Our clients' feedback speaks volumes about the quality and impact of our work. See what they have to say about their experiences working with us.</p>
         		</div>
         		<div class="testi_inner">
 					<div class="testi_slider owl-carousel">
 						 {% for testimonial in testimonials %}
-						<div class="item">
-							<div class="testi_item">
+						<div  style="min-height: 100px" class="item">
+							<div  class="testi_item">
 								<p>{{ testimonial.content }}</p>
 								<h4>{{ testimonial.client_name }}</h4>
 								<a href="#"><i class="fa fa-star"></i></a>

@@ -58,12 +58,32 @@ def services(request):
 
 
 def portfolio(request):
-    services = Service.objects.all()
-    testimonials = Testimonial.objects.all()
+    projects = Project.objects.all()
+    user = User.objects.first()
 
     context = {
-        'services': services,
-        'testimonials': testimonials,
+        'projects': projects,
+        'user': user,
     }
 
     return render(request, 'portfolio.html', context)
+
+
+def contact_us(request):
+    user = User.objects.first()
+
+    context = {
+        'user': user,
+    }
+
+    return render(request, 'contact.html', context)
+
+
+def blog(request):
+    user = User.objects.first()
+
+    context = {
+        'user': user,
+    }
+
+    return render(request, 'blog.html', context)

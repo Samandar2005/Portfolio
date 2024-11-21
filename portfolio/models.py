@@ -1,4 +1,5 @@
 from django.db import models
+from markdown import markdown
 
 
 class User(models.Model):
@@ -70,7 +71,6 @@ class Service(models.Model):
     description = models.TextField()
     service_image = models.ImageField(upload_to='service_image/', blank=True, null=True)
 
-
     def __str__(self):
         return self.title
 
@@ -90,12 +90,29 @@ class BlogPost(models.Model):
     author = models.CharField(max_length=100)
     date = models.DateField()
     content = models.TextField()
+    short_description = models.TextField()
     views = models.IntegerField(default=0)
     comments_count = models.IntegerField(default=0)
     category = models.CharField(max_length=100)
+    blog_image = models.ImageField(upload_to='blog_image/', blank=True, null=True)
 
     def __str__(self):
         return self.title
+
+    @property
+    def content_html(self):
+        return markdown(self.content)
+
+
+class Comment(models.Model):
+    blog_post = models.ForeignKey(BlogPost, related_name="comments", on_delete=models.CASCADE)
+    user = models.CharField(max_length=100)
+    email = models.EmailField()
+    content = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Comment by {self.user} on {self.blog_post.title}"
 
 
 class Tag(models.Model):

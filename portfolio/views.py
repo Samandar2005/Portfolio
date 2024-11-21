@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
-from .models import User, Skill, Experience, Education, Project, Service, Testimonial, BlogPost, Tag
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import User, Skill, Experience, Education, Project, Service, Testimonial, BlogPost, Tag, Comment
+from markdown import markdown
 
 
 def index(request):
@@ -81,9 +82,43 @@ def contact_us(request):
 
 def blog(request):
     user = User.objects.first()
+    blogs = BlogPost.objects.all()
 
     context = {
         'user': user,
+        'blogs': blogs,
     }
-
     return render(request, 'blog.html', context)
+
+
+def single_blog(request, blog_id):
+    blog = get_object_or_404(BlogPost, id=blog_id)
+    user = User.objects.first()
+    comments = blog.comments.all()
+
+    # Agar POST so'rovi bo'lsa, yangi sharh qo'shish
+    if request.method == "POST":
+        user = request.POST['user']
+        email = request.POST['email']
+        content = request.POST['content']  # Markdown formatida sharh
+
+        # Yangi sharh yaratish
+        Comment.objects.create(blog_post=blog, user=user, email=email, content=content)
+
+        # Sharhlar sonini yangilash
+        blog.comments_count = blog.comments.count()
+        blog.save()
+
+        # Yangi sharh qo'shilgandan so'ng, yana shu blog postiga qaytish
+        return redirect('single_blog', blog_id=blog.id)
+
+    # Kontekstga blog va sharhlarni qo'shish
+    context = {
+        'user': user,
+        'blog': blog,
+        'comments': comments,
+    }
+    return render(request, 'single-blog.html', context)
+
+
+

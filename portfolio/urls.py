@@ -11,4 +11,6 @@ urlpatterns = [
     path('portfolio', views.portfolio, name='portfolio'),
     path('contact', views.contact_us, name='contact_us'),
     path('blog', views.blog, name='blog'),
+    path('blog/<int:blog_id>/', views.single_blog, name='single_blog'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

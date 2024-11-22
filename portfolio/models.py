@@ -10,9 +10,9 @@ class User(models.Model):
     phone = models.CharField(max_length=20, blank=True, null=True)
     location = models.CharField(max_length=255)
     date_of_birth = models.DateField(blank=True, null=True)
-    total_donations = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-    total_projects = models.IntegerField(default=0)
-    total_volunteers = models.IntegerField(default=0)
+    completed_tasks = models.IntegerField(default=0)
+    open_source_projects = models.IntegerField(default=0)
+    years_of_experience = models.IntegerField(default=0)
     profile_image = models.ImageField(upload_to='user_images/', blank=True, null=True)
     profile_logo = models.ImageField(upload_to='logo/', blank=True, null=True)
 

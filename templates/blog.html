@@ -1,95 +1,40 @@
-	{% extends 'base_no_header.html' %}
-	{% load static %}
-	{% block content %}
-    <style>
-        body {
-            background-color: #000;
-            color: #fff;
-            font-family: Arial, sans-serif;
-        }
-        .blog_area {
-            padding: 50px 0;
-        }
-        .blog_item {
-            margin-bottom: 30px;
-            border-radius: 1px solid #000;
-            padding-bottom: 30px;
-            min-height: 90%;
-            max-height: 95%;
-        }
-        .blog_post img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-        .blog_details {
-            min-height: 350px;
-            max-height: 350px;
-        }
-        .blog_details h2 {
-            font-size: 28px;
-            margin-top: 20px;
-            color: #fff;
-        }
-        .blog_details h2:hover{
-            color: #fff;
-            text-decoration: underline;
-        }
-        .blog_details p {
-            font-size: 16px;
-            color: #ccc;
-        }
-        .white_bg_btn {
-            background-color: #444;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-        .white_bg_btn:hover {
-            background-color: #000;
-        }
-        .banner_area1{
-            background-color: #000;
-            position: relative;
-            z-index: 1;
-            min-height: 200px;
-            margin-top: 100px;
-        }
-    </style>
-    <section class="banner_area1">
-            <div style="background-color: #000;" class="box_1620">
-				<div class="banner_inner d-flex align-items-center">
-					<div class="container">
-						<div class="banner_content text-center">
-							<h2 style="color: #fff;">Blogs</h2>
-							<div class="page_link">
-								<a style="color: #fff;" href="{% url 'index' %}">Home ></a>
-								<a style="color: #fff;" href="{% url 'blog' %}">Blogs</a>
-							</div>
-						</div>
-					</div>
-				</div>
-            </div>
-        </section>
-    <section class="blog_area">
-        <div class="container">
-            <div class="row">
-                <!-- Blog Item 1 -->
-                {% for blog in blogs %}
-                <div class="col-lg-4">
-                    <div class="blog_item">
-                        <img width="100%" height="300px" src="{{ blog.blog_image.url }}" alt="Astronomy Binoculars">
-                        <div class="blog_details">
-                            <a href="{% url 'single_blog' blog.id %}"><h2>{{ blog.title }}</h2></a>
-                            <p>{{ blog.short_description }}</p>
-                            <a href="{% url 'single_blog' blog.id %}" class="white_bg_btn">View More</a>
-                        </div>
-                    </div>
+{% extends 'base_no_header.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+
+
+<section class="banner_area1">
+    <div class="box_1620">
+        <div class="banner_inner">
+            <div class="banner_content">
+                <h2>Blogs</h2>
+                <div class="page_link">
+                    <a href="{% url 'index' %}">Home ></a>
+                    <a href="{% url 'blog' %}">Blogs</a>
                 </div>
-                {% endfor %}
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<section class="blog_area">
+    <div class="container">
+        <div class="row">
+            {% for blog in blogs %}
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="blog_item">
+                    <img width="100%" height="200px" src="{{ blog.blog_image.url }}" alt="Blog Image">
+                    <div class="blog_details">
+                        <a href="{% url 'single_blog' blog.id %}"><h2>{{ blog.title }}</h2></a>
+                        <p>{{ blog.short_description }}</p>
+                        <a href="{% url 'single_blog' blog.id %}" class="white_bg_btn">View More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 
 {% endblock %}

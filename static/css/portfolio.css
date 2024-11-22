@@ -1,0 +1,17 @@
+/* Mobil format uchun moslashuv */
+@media (max-width: 768px) {
+    .banner_inner {
+        text-align: center;
+    }
+    .gallery_f_inner .h_gallery_item {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    .g_img_item img {
+        max-width: 100%;
+        height: auto;
+    }
+    .more_btn {
+        text-align: center;
+    }
+}

@@ -1,0 +1,69 @@
+.project-link {
+    text-decoration: none; /* Linkni hech qanday chizishsiz qilish */
+    color: inherit;        /* Link rangini ota-elemendan meros qilib olish */
+}
+
+/* Mobil format uchun moslash */
+@media (max-width: 768px) {
+    .banner_inner {
+        flex-direction: column;
+        text-align: center;
+    }
+    .media {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .media img {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 15px;
+    }
+    .media-body {
+        text-align: center;
+    }
+    .basic_info li, .personal_social li {
+        display: block;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .welcome_inner {
+        flex-direction: column;
+    }
+    .welcome_text, .tools_expert {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .feature_inner .col-lg-4, .feature_inner .col-md-6 {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .feature_inner .feature_item {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    .feature_item img {
+        height: auto;
+        max-width: 100%;
+        margin-bottom: 15px;
+    }
+    .feature_item {
+        padding: 10px;
+    }
+
+    .gallery_f_inner .col-lg-4,
+    .gallery_f_inner .col-md-4,
+    .gallery_f_inner .col-sm-6 {
+        width: 100%;
+    }
+
+    .testi_item {
+        padding: 20px;
+        text-align: center;
+    }
+    .testi_item h4 {
+        margin-top: 10px;
+    }
+}

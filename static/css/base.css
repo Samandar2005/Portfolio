@@ -1,0 +1,48 @@
+.service-icon {
+    width: 100%; /* Tasvirning kengligi */
+    height: 100%; /* Tasvirning balandligi */
+    object-fit: cover; /* Tasvirni to'g'ri joylash uchun */
+    margin-bottom: 15px; /* H4 teggacha masofa */
+}
+.feature_item{
+	min-height: 97%;
+	margin: 10px;
+}
+.feature_item h4{
+	text-align: center;
+}
+/* Mobil ekran uchun header va navbarni moslashtirish */
+@media (max-width: 576px) {
+    .header_area .logo_h img {
+        max-width: 150px; /* Logo hajmini moslash */
+    }
+    .navbar-nav {
+        text-align: center; /* Nav elementlar moslashuvi */
+    }
+}
+
+/* Mobil ekran uchun footerni moslash */
+@media (max-width: 576px) {
+    .footer_inner {
+        flex-direction: column;
+        text-align: center;
+    }
+    .f_widget {
+        margin-bottom: 20px;
+    }
+    .f_widget ul {
+        justify-content: center;
+        padding-left: 0;
+    }
+}
+
+/* Kontentni moslash */
+@media (max-width: 768px) {
+    .feature_item {
+        padding: 10px;
+    }
+    .service-icon {
+        width: 80%;
+        height: auto;
+    }
+}

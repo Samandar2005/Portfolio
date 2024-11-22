@@ -1,112 +1,25 @@
 {% extends 'base_no_header.html' %}
 {% load static %}
-
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/single-blog.css' %}">
 <style>
-    body {
-        background-color: #000;
-        color: #fff;
-        font-family: Arial, sans-serif;
-    }
-    .container {
-        max-width: 800px;
-        margin: 20px auto;
-        padding: 20px;
-        background-color: #222;
-        border-radius: 8px;
-    }
-    .blog-header {
-        text-align: center;
-    }
-    .blog-header h1 {
-        margin-bottom: 10px;
-    }
-    .blog-meta {
-        color: #888;
-        font-size: 14px;
-        margin-bottom: 20px;
-        text-align: center;
-    }
-    .blog-content {
-        margin-bottom: 40px;
-        line-height: 1.6;
-    }
-    .comments-section {
-        margin-top: 40px;
-    }
-    .comments-section h2 {
-        margin-bottom: 20px;
-        border-bottom: 2px solid #444;
-        padding-bottom: 10px;
-    }
-    .comment {
-        margin-bottom: 20px;
-        border-bottom: 1px solid #444;
-        padding-bottom: 10px;
-    }
-    .comment h5 {
-        margin-bottom: 5px;
-        color: #ff6347;
-    }
-    .comment span {
-        color: #888;
-        font-size: 12px;
-    }
-    .comment p {
-        margin: 5px 0;
-    }
-    .comment-form {
-        margin-top: 40px;
-        background-color: #4b4b4b;
-    }
-    .comment-form input, .comment-form textarea {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 15px;
-        background-color: #333;
-        border: 1px solid #444;
-        border-radius: 5px;
-        color: #fff;
-    }
-    .comment-form button {
-        background-color: #ff6347;
-        color: #fff;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    .comment-form button:hover {
-        background-color: #ff4500;
-    }
-    .banner_area1{
-            background-color: #000;
-            position: relative;
-            z-index: 1;
-            min-height: 200px;
-            margin-top: 100px;
-        }
+
 </style>
 
-<section class="banner_area1">
-            <div style="background-color: #000;" class="box_1620">
-				<div class="banner_inner d-flex align-items-center">
-					<div class="container">
-						<div class="banner_content text-center">
-							<h2 style="color: #fff;">Blogs</h2>
-							<div class="page_link">
-								<a style="color: #fff;" href="{% url 'index' %}">Home > </a>
-								<a style="color: #fff;" href="{% url 'blog' %}">Blogs > </a>
-								<a style="color: #fff;" href="#">{{ blog.title }}</a>
-							</div>
-						</div>
-					</div>
-				</div>
+<section class="banner_area1" style="background-image: url({{ blog.blog_image.url }});">
+    <div class="banner_inner">
+        <div class="banner_content">
+            <h2>{{ blog.title }}</h2>
+            <div class="page_link">
+                <a href="{% url 'index' %}">Home > </a>
+                <a href="{% url 'blog' %}">Blogs > </a>
+                <a href="#">{{ blog.title }}</a>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
 <div class="container">
-    <!-- Blog Post Header -->
     <div class="blog-header">
         <h1>{{ blog.title }}</h1>
         <p class="blog-meta">
@@ -116,28 +29,25 @@
         </p>
     </div>
 
-    <!-- Blog Content (Markdown to HTML) -->
     <div class="blog-content">
         {{ blog.content_html|safe }}
     </div>
 
-    <!-- Comments Section -->
     <div class="comments-section">
         <h2>Comments ({{ blog.comments_count }})</h2>
         <div class="comments">
             {% for comment in comments %}
-                <div class="comment">
-                    <h5>{{ comment.user }} <span>({{ comment.date|date:"F j, Y, g:i a" }})</span></h5>
-                    <p>{{ comment.content }}</p>
-                </div>
+            <div class="comment">
+                <h5>{{ comment.user }} <span>({{ comment.date|date:"F j, Y, g:i a" }})</span></h5>
+                <p>{{ comment.content }}</p>
+            </div>
             {% empty %}
-                <p>No comments yet. Be the first to comment!</p>
+            <p>No comments yet. Be the first to comment!</p>
             {% endfor %}
         </div>
 
-        <!-- Comment Form -->
         <div class="comment-form">
-            <h3 style="color: black;">Leave a Comment</h3>
+            <h3>Leave a Comment</h3>
             <form method="post">
                 {% csrf_token %}
                 <input type="text" name="user" placeholder="Your Name" required>

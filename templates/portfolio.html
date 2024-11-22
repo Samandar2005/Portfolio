@@ -1,56 +1,58 @@
-	{% extends 'base.html' %}
-	{% load static %}
-	{% block content %}
-        <!--================Home Banner Area =================-->
-        <section class="banner_area">
-            <div class="box_1620">
-				<div class="banner_inner d-flex align-items-center">
-					<div class="container">
-						<div class="banner_content text-center">
-							<h2>Portfolio</h2>
-							<div class="page_link">
-								<a href="{% url 'index' %}">Home</a>
-								<a href="{% url 'portfolio' %}">Portfolio</a>
-							</div>
-						</div>
-					</div>
-				</div>
-            </div>
-        </section>
-        <!--================End Home Banner Area =================-->
-        
-        <!--================Home Gallery Area =================-->
-        <section class="home_gallery_area p_120">
-        	<div class="container">
-        		<div class="main_title">
-        			<h2>Our Latest Successful Projects</h2>
-        			<p>Showcasing our recent work and successful outcomes.</p>
-        		</div>
-        	</div>
-        	<div class="container">
-        		<div class="gallery_f_inner row imageGallery1">
-					{% for project in projects %}
-        			<div class="col-lg-4 col-md-4 col-sm-6 brand manipul design print">
-        				<div class="h_gallery_item">
-        					<div class="g_img_item">
-        						<img class="img-fluid" src="{{ project.project_image.url }}" alt="">
-        						<a class="light" href="{{ project.project_image.url }}">
-									<img src="{% static 'img/gallery/icon.png' %}" alt="">
-								</a>
-        					</div>
-        					<div class="g_item_text">
-        						<h4>{{ project.title }}</h4>
-        						<p>{{ project.description }}</p>
-        					</div>
-        				</div>
-        			</div>
-					{% endfor %}
-        		</div>
-        		<div class="more_btn">
-        			<a class="main_btn" href="#">Load More Items</a>
-        		</div>
-        	</div>
-        </section>
-        <!--================End Home Gallery Area =================-->
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/portfolio.css' %}">
 
-	{% endblock %}
+<!--================Home Banner Area =================-->
+<section class="banner_area">
+    <div class="box_1620">
+        <div class="banner_inner d-flex align-items-center">
+            <div class="container">
+                <div class="banner_content text-center">
+                    <h2>Portfolio</h2>
+                    <div class="page_link">
+                        <a href="{% url 'index' %}">Home</a>
+                        <a href="{% url 'portfolio' %}">Portfolio</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Home Banner Area =================-->
+
+<!--================Home Gallery Area =================-->
+<section class="home_gallery_area p_120">
+    <div class="container">
+        <div class="main_title">
+            <h2>Our Latest Successful Projects</h2>
+            <p>Showcasing our recent work and successful outcomes.</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="gallery_f_inner row imageGallery1">
+            {% for project in projects %}
+            <div class="col-lg-4 col-md-4 col-sm-6 brand manipul design print">
+                <div class="h_gallery_item">
+                    <div class="g_img_item">
+                        <img class="img-fluid" src="{{ project.project_image.url }}" alt="">
+                        <a class="light" href="{{ project.project_image.url }}">
+                            <img src="{% static 'img/gallery/icon.png' %}" alt="">
+                        </a>
+                    </div>
+                    <div class="g_item_text">
+                        <h4>{{ project.title }}</h4>
+                        <p>{{ project.description }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="more_btn">
+            <a class="main_btn" href="#">Load More Items</a>
+        </div>
+    </div>
+</section>
+<!--================End Home Gallery Area =================-->
+
+{% endblock %}

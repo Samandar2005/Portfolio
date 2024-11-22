@@ -1,157 +1,107 @@
-	{% extends 'base.html' %}
-	{% load static %}
-	{% block content %}
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
 
-        <!--================Home Banner Area =================-->
-        <section class="home_banner_area">
-           	<div class="container box_1620">
-           		<div class="banner_inner d-flex align-items-center">
-					<div class="banner_content">
-						<div class="media">
-							<div class="d-flex">
-								<img src="{{ user.profile_image.url }}" alt="User Image" class="img-fluid">
-							</div>
-							<div class="media-body">
-								<div class="personal_text">
-									<h6>Hello Everybody, i am</h6>
-									<h3>{{ user.name }}</h3>
-									<h4>{{ user.title }}</h4>
-									<p>{{ user.about }}</p>
-									<ul class="list basic_info">
-										<li><a href="#"><i class="lnr lnr-calendar-full"></i> {{ user.date_of_birth }}</a></li>
-										<li><a href="#"><i class="lnr lnr-phone-handset"></i> {{ user.phone }}</a></li>
-										<li><a href="#"><i class="lnr lnr-envelope"></i> {{ user.contact_email }}</a></li>
-										<li><a href="#"><i class="lnr lnr-home"></i> {{ user.location }}</a></li>
-									</ul>
-									<ul class="list personal_social">
-										<li><a href="https://github.com/Samandar2005" target="_blank"><i class="fa fa-github"></i></a></li>
-										<li><a href="https://www.linkedin.com/in/samandar-bo-riyev-612250266/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-										<li><a href="https://t.me/BoriyevSamandar"><i class="fa fa-telegram" target="_blank"></i></a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+<style>
+
+</style>
+
+<!--================Home Banner Area =================-->
+<section class="home_banner_area">
+    <div class="container box_1620">
+        <div class="banner_inner d-flex align-items-center">
+            <div class="banner_content">
+                <div class="media">
+                    <div class="d-flex">
+                        <img src="{{ user.profile_image.url }}" alt="User Image" class="img-fluid">
+                    </div>
+                    <div class="media-body">
+                        <div class="personal_text">
+                            <h6>Hello Everybody, I am</h6>
+                            <h3>{{ user.name }}</h3>
+                            <h4>{{ user.title }}</h4>
+                            <p>{{ user.about }}</p>
+                            <ul class="list basic_info">
+                                <li><a href="#"><i class="lnr lnr-calendar-full"></i> {{ user.date_of_birth }}</a></li>
+                                <li><a href="#"><i class="lnr lnr-phone-handset"></i> {{ user.phone }}</a></li>
+                                <li><a href="#"><i class="lnr lnr-envelope"></i> {{ user.contact_email }}</a></li>
+                                <li><a href="#"><i class="lnr lnr-home"></i> {{ user.location }}</a></li>
+                            </ul>
+                            <ul class="list personal_social">
+                                <li><a href="https://github.com/Samandar2005" target="_blank"><i class="fa fa-github"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/samandar-bo-riyev-612250266/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="https://t.me/BoriyevSamandar" target="_blank"><i class="fa fa-telegram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
-        <!--================End Home Banner Area =================-->
-        
-        <!--================Welcome Area =================-->
-        <section class="welcome_area p_120">
-        	<div class="container">
-        		<div class="row welcome_inner">
-        			<div class="col-lg-6">
-        				<div class="welcome_text">
-        					<h4>About Myself</h4>
-        					<p>{{ user.about }}</p>
-        					<div class="row">
-        						<div class="col-md-4">
-        							<div class="wel_item">
-        								<i class="lnr lnr-database"></i>
-        								<h4>{{ user.total_donations }}</h4>
-        								<p>Total Donation</p>
-        							</div>
-        						</div>
-        						<div class="col-md-4">
-        							<div class="wel_item">
-        								<i class="lnr lnr-book"></i>
-        								<h4>{{ user.total_projects }}</h4>
-        								<p>Total Projects</p>
-        							</div>
-        						</div>
-        						<div class="col-md-4">
-        							<div class="wel_item">
-        								<i class="lnr lnr-users"></i>
-        								<h4>{{ user.total_volunteers }}</h4>
-        								<p>Total Volunteers</p>
-        							</div>
-        						</div>
-        					</div>
-        				</div>
-        			</div>
-        			<div class="col-lg-6">
-        				<div class="tools_expert">
-        					<div class="skill_main">
-								{% for skill in skills %}
-								<div class="skill_item">
-									<h4>{{ skill.skill_name }} <span class="counter">{{ skill.proficiency }}</span>%</h4>
-									<div class="progress_br">
-										<div class="progress">
-											<div class="progress-bar" role="progressbar" aria-valuenow="{{ skill.proficiency }}" aria-valuemin="0" aria-valuemax="100"></div>
-										</div>
-									</div>
-								</div>
-								{% endfor %}
-							</div>
-        				</div>
-        			</div>
-        		</div>
-        	</div>
-        </section>
-        <!--================End Welcome Area =================-->
-        
-        <!--================My Tabs Area =================-->
-        <section class="mytabs_area p_120">
-        	<div class="container">
-        		<div class="tabs_inner">
-					<ul class="nav nav-tabs" id="myTab" role="tablist">
-						<li class="nav-item">
-							<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">My Experiences</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">My Education</a>
-						</li>
-					</ul>
-					<div class="tab-content" id="myTabContent">
-						<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-							<ul class="list">
-								{% for experience in experiences %}
-								<li>
-									<span></span>
-									<div class="media">
-										<div class="d-flex">
-											<p>{{ experience.start_date  }} to present</p>
-										</div>
-										<div class="media-body">
-											<h4>{{ experience.company }}</h4>
-											<p>{{ experience.title }} <br />{{ experience.location }}</p>
-										</div>
-									</div>
-								</li>
-								{% endfor %}
-							</ul>
-						</div>
-						<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-							<ul class="list">
-								{% for edu in educations %}
-								<li>
-									<span></span>
-									<div class="media">
-										<div class="d-flex">
-											<p>{{ edu.start_date }} to present</p>
-										</div>
-										<div class="media-body">
-											<h4>{{ edu.institution }}</h4>
-											<p>{{ edu.degree }} <br /> {{ edu.end_date }}</p>
-										</div>
-									</div>
-								</li>
-								{% endfor %}
-							</ul>
-						</div>
-					</div>
-        		</div>
-        	</div>
-        </section>
-        <!--================End My Tabs Area =================-->
-        
-        <!--================Feature Area =================-->
-        <section class="feature_area p_120">
+        </div>
+    </div>
+</section>
+<!--================End Home Banner Area =================-->
+
+<!--================Welcome Area =================-->
+<section class="welcome_area p_120">
+    <div class="container">
+        <div class="row welcome_inner">
+            <div class="col-lg-6">
+                <div class="welcome_text">
+                    <h4>About Myself</h4>
+                    <p>{{ user.about }}</p>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="wel_item">
+                                <i class="lnr lnr-database"></i>
+                                <h4>{{ user.total_donations }}</h4>
+                                <p>Total Donation</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="wel_item">
+                                <i class="lnr lnr-book"></i>
+                                <h4>{{ user.total_projects }}</h4>
+                                <p>Total Projects</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="wel_item">
+                                <i class="lnr lnr-users"></i>
+                                <h4>{{ user.total_volunteers }}</h4>
+                                <p>Total Volunteers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="tools_expert">
+                    <div class="skill_main">
+                        {% for skill in skills %}
+                        <div class="skill_item">
+                            <h4>{{ skill.skill_name }} <span class="counter">{{ skill.proficiency }}</span>%</h4>
+                            <div class="progress_br">
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="{{ skill.proficiency }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Welcome Area =================-->
+
+<!--================Feature Area =================-->
+<section class="feature_area p_120">
     <div class="container">
         <div class="main_title">
-            <h2>offerings to my clients</h2>
-            <p>My professional services span across multiple areas, from design and development to data analytics and more. With years of experience, I help my clients achieve their goals by providing high-quality solutions tailored to their needs.</p>
+            <h2>Offerings to My Clients</h2>
+            <p>Providing professional services to help you achieve your goals with tailored solutions.</p>
         </div>
         <div class="feature_inner row">
             {% for service in services %}
@@ -166,69 +116,66 @@
         </div>
     </div>
 </section>
+<!--================End Feature Area =================-->
 
-        <!--================End Feature Area =================-->
-        
-        <!--================Home Gallery Area =================-->
-        <section class="home_gallery_area p_120">
-        	<div class="container">
-        		<div class="main_title">
-        			<h2>Our Latest Successful Projects</h2>
-        			<p>Showcasing our recent work and successful outcomes.</p>
-        		</div>
-        	</div>
-        	<div class="container">
-        		<div class="gallery_f_inner row imageGallery1">
-					{% for project in projects %}
-        			<div class="col-lg-4 col-md-4 col-sm-6 brand manipul design print">
-        				<div class="h_gallery_item">
-        					<div class="g_img_item">
-        						<img class="img-fluid" src="{{ project.project_image.url }}" alt="">
-        						<a class="light" href="{{ project.project_image.url }}">
-									<img src="{% static 'img/gallery/icon.png' %}" alt="">
-								</a>
-        					</div>
-        					<div class="g_item_text">
-        						<h4>{{ project.title }}</h4>
-        						<p>{{ project.description }}</p>
-        					</div>
-        				</div>
-        			</div>
-					{% endfor %}
-        		</div>
-        		<div class="more_btn">
-        			<a class="main_btn" href="#">Load More Items</a>
-        		</div>
-        	</div>
-        </section>
-        <!--================End Home Gallery Area =================-->
-        
-        <!--================Testimonials Area =================-->
-        <section class="testimonials_area p_120">
-        	<div class="container">
-        		<div class="main_title">
-        			<h2>Testimonials</h2>
-        			<p>Our clients' feedback speaks volumes about the quality and impact of our work. See what they have to say about their experiences working with us.</p>
-        		</div>
-        		<div class="testi_inner">
-					<div class="testi_slider owl-carousel">
-						 {% for testimonial in testimonials %}
-						<div  style="min-height: 100px" class="item">
-							<div  class="testi_item">
-								<p>{{ testimonial.content }}</p>
-								<h4>{{ testimonial.client_name }}</h4>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star"></i></a>
-								<a href="#"><i class="fa fa-star-half-o"></i></a>
-							</div>
-						</div>
-						{% endfor %}
-					</div>
-        		</div>
-        	</div>
-        </section>
-        <!--================End Testimonials Area =================-->
-        
-        {% endblock %}
+<!--================Home Gallery Area =================-->
+<section class="home_gallery_area p_120">
+    <div class="container">
+        <div class="main_title">
+            <h2>Our Latest Successful Projects</h2>
+            <p>Showcasing recent work and successful outcomes.</p>
+        </div>
+        <div class="gallery_f_inner row imageGallery1">
+            {% for project in projects %}
+            <div class="col-lg-4 col-md-4 col-sm-6 brand manipul design print">
+                <div class="h_gallery_item">
+                    <div class="g_img_item">
+                        <img class="img-fluid" src="{{ project.project_image.url }}" alt="">
+                        <a class="light" href="{{ project.project_image.url }}">
+                            <img src="{% static 'img/gallery/icon.png' %}" alt="">
+                        </a>
+                    </div>
+                    <div class="g_item_text">
+                        <h4><a href="#" class="project-link">{{ project.title }}</a></h4>
+                        <p>{{ project.description }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="more_btn">
+            <a class="main_btn" href="#">Load More Items</a>
+        </div>
+    </div>
+</section>
+<!--================End Home Gallery Area =================-->
+
+<!--================Testimonials Area =================-->
+<section class="testimonials_area p_120">
+    <div class="container">
+        <div class="main_title">
+            <h2>Testimonials</h2>
+            <p>What clients say about their experiences working with us.</p>
+        </div>
+        <div class="testi_inner">
+            <div class="testi_slider owl-carousel">
+                {% for testimonial in testimonials %}
+                <div style="min-height: 100px" class="item">
+                    <div class="testi_item">
+                        <p>{{ testimonial.content }}</p>
+                        <h4>{{ testimonial.client_name }}</h4>
+                        <a href="#"><i class="fa fa-star"></i></a>
+                        <a href="#"><i class="fa fa-star"></i></a>
+                        <a href="#"><i class="fa fa-star"></i></a>
+                        <a href="#"><i class="fa fa-star"></i></a>
+                        <a href="#"><i class="fa fa-star-half-o"></i></a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Testimonials Area =================-->
+
+{% endblock %}

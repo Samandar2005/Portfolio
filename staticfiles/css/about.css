@@ -1,0 +1,51 @@
+/* Mobil format uchun moslashuv */
+@media (max-width: 768px) {
+    .banner_inner {
+        text-align: center;
+    }
+    .profile_inner {
+        flex-direction: column;
+    }
+    .profile_inner .row {
+        flex-direction: column;
+        align-items: center;
+    }
+    .col-lg-5 img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+    .personal_text {
+        text-align: center;
+    }
+    .basic_info li, .personal_social li {
+        display: block;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .welcome_inner {
+        flex-direction: column;
+    }
+    .welcome_text, .tools_expert {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .tools_expert .skill_item {
+        margin-bottom: 15px;
+    }
+
+    .testi_inner .item {
+        text-align: center;
+        padding: 20px;
+    }
+
+    .testi_inner .testi_item h4 {
+        margin-top: 10px;
+    }
+
+    .progress-bar {
+        height: 5px;
+    }
+}

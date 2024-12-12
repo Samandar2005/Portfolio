@@ -60,6 +60,7 @@ class Project(models.Model):
     type = models.CharField(max_length=50)
     category = models.CharField(max_length=50)
     project_image = models.ImageField(upload_to='project_image/', blank=True, null=True)
+    project_link = models.CharField(max_length=100)
 
     def __str__(self):
         return self.title

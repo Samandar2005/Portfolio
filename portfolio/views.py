@@ -80,7 +80,7 @@ def contact_us(request):
     return render(request, 'contact.html', context)
 
 
-def blog(request):
+def blogs(request):
     user = User.objects.first()
     blogs = BlogPost.objects.all()
 

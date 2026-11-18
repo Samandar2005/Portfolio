@@ -1,5 +1,10 @@
 # Django Portfolio Web Application
 
+## Overview in English
+
+A Django portfolio and blog application with project pages, Docker Compose, and Nginx configuration.
+
+
 Shaxsiy portfolio websaytini yaratish uchun Django asosida qurilgan kuchli veb-ilovasining to'liq bosh loyihasi.
 
 ## 📋 Loyiha Haqida

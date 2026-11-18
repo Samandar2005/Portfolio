@@ -248,7 +248,6 @@ poetry.lock
 # Miscelleneous
 # ===============================
 *.md.swp
-.env.example
 local_settings.py
 instance/
 .webassets-cache

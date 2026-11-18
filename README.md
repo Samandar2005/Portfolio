@@ -164,6 +164,10 @@ python manage.py runserver
 
 ### Docker-compose bilan (Tavsiya etiladi)
 
+Copy `.env.example` to `.env` locally before starting Compose. Replace
+`SECRET_KEY` with a newly generated value. Use `DEBUG=False` for a deployed
+instance.
+
 ```bash
 docker-compose up --build
 ```
